@@ -7,6 +7,7 @@ public abstract class ClubeMGActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ClubeMGApplication.getStorageComponent(this).inject(this);
+        ClubeMGApplication.getArmazenamentoComponent(this).inject(this);
+        ClubeMGApplication.getComunicacoesComponent(this).inject(this);
     }
 }

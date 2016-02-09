@@ -9,13 +9,25 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import pt.rikmartins.clubemg.clubemgandroid.comunicacoes.RestApiV1;
+import pt.rikmartins.clubemg.clubemgandroid.comunicacoes.clubemg.v1.ActividadesService;
+import pt.rikmartins.clubemg.clubemgandroid.comunicacoes.clubemg.v1.CategoriasService;
+import pt.rikmartins.clubemg.clubemgandroid.comunicacoes.clubemg.v1.EtiquetasService;
+import pt.rikmartins.clubemg.clubemgandroid.comunicacoes.clubemg.v1.PublicacoesService;
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
 import retrofit.RxJavaCallAdapterFactory;
 
 @Module
 public class RestApiModule {
+    private static final String REST_API_URL = "http://ricardomartins.pythonanywhere.com/";
+    private static final String LOCAL_REST_API_URL = "http://10.0.2.2:8000/";
+
+    private boolean useApiOnLocalMachine;
+
+    public RestApiModule(boolean useApiOnLocalMachine) {
+        this.useApiOnLocalMachine = useApiOnLocalMachine;
+    }
+
     @Provides
     @Singleton
     @Named("restApi")
@@ -36,19 +48,31 @@ public class RestApiModule {
 
     @Provides
     @Singleton
-    RestApiV1 provideRestApiV1(@Named("restApi") Retrofit retrofit) {
-        return retrofit.create(RestApiV1.class);
+    PublicacoesService providePublicacoesService(@Named("restApi") Retrofit retrofit) {
+        return retrofit.create(PublicacoesService.class);
+    }
+
+    @Provides
+    @Singleton
+    CategoriasService provideCategoriasService(@Named("restApi") Retrofit retrofit) {
+        return retrofit.create(CategoriasService.class);
+    }
+
+    @Provides
+    @Singleton
+    EtiquetasService provideEtiquetasService(@Named("restApi") Retrofit retrofit) {
+        return retrofit.create(EtiquetasService.class);
+    }
+
+    @Provides
+    @Singleton
+    ActividadesService provideActividadesService(@Named("restApi") Retrofit retrofit) {
+        return retrofit.create(ActividadesService.class);
     }
 
     @Provides
     @Named("restApi")
     String provideRestApiUrl() {
-        return "http://www.google.com"; // TODO: Url do ponto de acesso no meu servidor
-    }
-
-    @Provides
-    @Named("localRestApi")
-    String provideRestV1Url() {
-        return "http://10.0.2.2:8000/";
+        return useApiOnLocalMachine ? LOCAL_REST_API_URL : REST_API_URL;
     }
 }
