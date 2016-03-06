@@ -1,12 +1,18 @@
 <resources>
     <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">#3F51B5</item>
-        <!-- Light Indigo -->
-        <item name="colorPrimaryDark">#3949AB</item>
-        <!-- Dark Indigo -->
-        <item name="colorAccent">#00B0FF</item>
-        <!-- Blue -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="divider">@color/colorDivider</item>
     </style>
     <style name="AppTheme" parent="AppTheme.Base"/>
+
+    <style name="ListItemPrimaryText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="ListItemSecondaryText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
 </resources>

@@ -1,64 +1,36 @@
-package pt.rikmartins.clubemg.clubemgandroid;
+package pt.rikmartins.clubemg.clubemgandroid.ui.actividades;
 
 import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.NavigationView;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-
-import java.util.List;
+import android.support.v7.widget.RecyclerView;
 
 import javax.inject.Inject;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
-import pt.rikmartins.clubemg.clubemgandroid.base.ClubeMGActivity;
-import pt.rikmartins.clubemg.clubemgandroid.bd.modelos.Categoria;
+import pt.rikmartins.clubemg.clubemgandroid.R;
+import pt.rikmartins.clubemg.clubemgandroid.base.ClubeMGDrawerActivity;
 import pt.rikmartins.clubemg.clubemgandroid.comunicacoes.clubemg.v1.CategoriasService;
 import pt.rikmartins.clubemg.clubemgandroid.comunicacoes.clubemg.v1.EtiquetasService;
 import pt.rikmartins.clubemg.clubemgandroid.comunicacoes.clubemg.v1.PublicacoesService;
-import pt.rikmartins.clubemg.clubemgandroid.comunicacoes.modelos.Pagina;
-import pt.rikmartins.clubemg.clubemgandroid.comunicacoes.modelos.Publicacao;
-import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.functions.Func1;
-import rx.schedulers.Schedulers;
 
-public class PublicacoesActivity extends ClubeMGActivity {
+public class CalendarioActividadesActivity extends ClubeMGDrawerActivity {
 
     @Inject SharedPreferences sharedPreferences;
     @Inject PublicacoesService publicacoesService;
     @Inject CategoriasService categoriasService;
     @Inject EtiquetasService etiquetasService;
 
-    @Bind(R.id.drawer)
-    DrawerLayout drawer;
     @Bind(R.id.main_content)
     CoordinatorLayout mainContent;
     @Bind(R.id.appbar)
     AppBarLayout appBar;
-    @Bind(R.id.toolbar)
-    Toolbar toolbar;
-    @Bind(R.id.tabs)
-    TabLayout tabs;
-    @Bind(R.id.viewpager)
-    ViewPager viewPager;
-    @Bind(R.id.navegacao_view)
-    NavigationView navegacao;
+    @Bind(R.id.listaPublicacoes)
+    RecyclerView recyclerViewPager;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_publicacoes);
-        ButterKnife.bind(this);
-
-        setSupportActionBar(toolbar);
+    public int getContentViewId() {
+        return R.layout.activity_publicacoes;
     }
 
 //    public void obterNoticias(View view) {
@@ -80,4 +52,5 @@ public class PublicacoesActivity extends ClubeMGActivity {
 //                    }
 //                });
 //    }
+
 }

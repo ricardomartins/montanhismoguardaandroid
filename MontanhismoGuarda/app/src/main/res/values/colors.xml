@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary" >#f44336</color>
+    <color name="colorPrimaryLight" >#ffcdd2</color>
+    <color name="colorPrimaryDark" >#d32f2f</color>
+    <color name="colorAccent" >#536dfe</color>
+    <color name="colorAccentLight" >#8c9eff</color>
+    <color name="colorAccentDark" >#3d5afe</color>
 
+    <color name="colorText">#dd000000</color>
+    <color name="colorTextSecondary">#89000000</color>
+    <color name="colorTextHint">#60000000</color>
+    <color name="colorTextDisabled">@color/colorTextHint</color>
 
-    <color name="white">#FFFFFF</color>
-    <color name="dark_grey">#424242</color>
-    <color name="medium_grey">#9E9E9E</color>
-    <color name="button_grey">#757575</color>
+    <color name="colorTextInverse">#ffffffff</color>
+    <color name="colorTextSecondaryInverse">#b2ffffff</color>
+    <color name="colorTextHintInverse">#7fffffff</color>
+    <color name="colorTextDisabledInverse">@color/colorTextHintInverse</color>
+
+    <color name="colorDivider">#1e000000</color>
+    <color name="colorDividerInverse">@color/colorTextHint</color>
+
+    <color name="colorIcon">#1e000000</color>
+    <color name="colorIconInverse">@color/colorTextHintInverse</color>
 </resources>

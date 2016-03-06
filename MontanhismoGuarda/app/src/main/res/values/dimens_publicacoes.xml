@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="item_publicacao_altura">104dp</dimen>
+    <dimen name="imagem_publicacao_altura">64dp</dimen> <!-- uso isto? -->
+    <dimen name="imagem_publicacao_largura">84dp</dimen>
+
+</resources>

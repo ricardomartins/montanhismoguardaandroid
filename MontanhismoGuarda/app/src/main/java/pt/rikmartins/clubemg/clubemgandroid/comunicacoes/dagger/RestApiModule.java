@@ -13,9 +13,8 @@ import pt.rikmartins.clubemg.clubemgandroid.comunicacoes.clubemg.v1.ActividadesS
 import pt.rikmartins.clubemg.clubemgandroid.comunicacoes.clubemg.v1.CategoriasService;
 import pt.rikmartins.clubemg.clubemgandroid.comunicacoes.clubemg.v1.EtiquetasService;
 import pt.rikmartins.clubemg.clubemgandroid.comunicacoes.clubemg.v1.PublicacoesService;
-import retrofit.GsonConverterFactory;
-import retrofit.Retrofit;
-import retrofit.RxJavaCallAdapterFactory;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module
 public class RestApiModule {
@@ -38,10 +37,9 @@ public class RestApiModule {
     @Provides
     @Singleton
     @Named("restApi")
-    Retrofit provideRestApiRetrofit(@Named("restApi") Gson gson, @Named("localRestApi") String url) {
+    Retrofit provideRestApiRetrofit(@Named("restApi") Gson gson, @Named("restApi") String url) {
         return new Retrofit.Builder()
                 .baseUrl(url)
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
     }

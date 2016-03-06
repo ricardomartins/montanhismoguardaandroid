@@ -3,6 +3,8 @@ package pt.rikmartins.clubemg.clubemgandroid.comunicacoes.modelos;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.joda.time.DateTime;
+
 import javax.annotation.Generated;
 
 @Generated("org.jsonschema2pojo")
@@ -32,6 +34,9 @@ public class Publicacao implements Paginavel {
     @SerializedName("conteudo")
     @Expose
     private String conteudo;
+    @SerializedName("excerto")
+    @Expose
+    private String excerto;
     @SerializedName("categorias")
     @Expose
     private String categorias;
@@ -43,10 +48,10 @@ public class Publicacao implements Paginavel {
     private String ligacaoPublicacao;
     @SerializedName("data")
     @Expose
-    private String data;
+    private DateTime data;
     @SerializedName("data_modificacao")
     @Expose
-    private String dataModificacao;
+    private DateTime dataModificacao;
     @SerializedName("actividades")
     @Expose
     private String actividades;
@@ -73,7 +78,7 @@ public class Publicacao implements Paginavel {
      * @param dataModificacao
      * @param destacada
      */
-    public Publicacao(String url, Long id, String titulo, String identificador, Boolean destacada, String ligacaoImagem, Long seloTemporal, String conteudo, String categorias, String etiquetas, String ligacaoPublicacao, String data, String dataModificacao, String actividades) {
+    public Publicacao(String url, Long id, String titulo, String identificador, Boolean destacada, String ligacaoImagem, Long seloTemporal, String conteudo, String excerto, String categorias, String etiquetas, String ligacaoPublicacao, DateTime data, DateTime dataModificacao, String actividades) {
         this.url = url;
         this.id = id;
         this.titulo = titulo;
@@ -82,6 +87,7 @@ public class Publicacao implements Paginavel {
         this.ligacaoImagem = ligacaoImagem;
         this.seloTemporal = seloTemporal;
         this.conteudo = conteudo;
+        this.excerto = excerto;
         this.categorias = categorias;
         this.etiquetas = etiquetas;
         this.ligacaoPublicacao = ligacaoPublicacao;
@@ -203,6 +209,19 @@ public class Publicacao implements Paginavel {
     }
 
     /**
+     * @return The excerto
+     */
+    public String getExcerto() {
+        return excerto;
+    }
+
+    /**
+     * @param excerto The excerto
+     */
+    public void setExcerto(String excerto) {
+        this.excerto = excerto;
+    }
+    /**
      * @return The categorias
      */
     public String getCategorias() {
@@ -247,28 +266,28 @@ public class Publicacao implements Paginavel {
     /**
      * @return The data
      */
-    public String getData() {
+    public DateTime getData() {
         return data;
     }
 
     /**
      * @param data The data
      */
-    public void setData(String data) {
+    public void setData(DateTime data) {
         this.data = data;
     }
 
     /**
      * @return The dataModificacao
      */
-    public String getDataModificacao() {
+    public DateTime getDataModificacao() {
         return dataModificacao;
     }
 
     /**
      * @param dataModificacao The data_modificacao
      */
-    public void setDataModificacao(String dataModificacao) {
+    public void setDataModificacao(DateTime dataModificacao) {
         this.dataModificacao = dataModificacao;
     }
 
@@ -285,5 +304,4 @@ public class Publicacao implements Paginavel {
     public void setActividades(String actividades) {
         this.actividades = actividades;
     }
-
 }

@@ -6,16 +6,16 @@ import pt.rikmartins.clubemg.clubemgandroid.comunicacoes.modelos.Actividade;
 import pt.rikmartins.clubemg.clubemgandroid.comunicacoes.modelos.Pagina;
 import pt.rikmartins.clubemg.clubemgandroid.comunicacoes.modelos.Publicacao;
 import pt.rikmartins.clubemg.clubemgandroid.comunicacoes.modelos.Taxonomia;
-import retrofit.http.GET;
-import retrofit.http.Path;
-import retrofit.http.Query;
-import rx.Observable;
+import retrofit2.Call;
+import retrofit2.http.GET;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ActividadesService {
     String PREFIXO = Base.PREFIXO_V1 + "/actividades";
 
     @GET(PREFIXO + "/")
-    Observable<Pagina<Actividade>> getActividades(@Query("modificado") Long modificado,
+    Call<Pagina<Actividade>> getActividades(@Query("modificado") Long modificado,
                                                   @Query("dia_inicial") String diaInicial,
                                                   @Query("dia_final") String diaFinal,
                                                   @Query("ano") Integer ano,
@@ -26,18 +26,18 @@ public interface ActividadesService {
                                                   @Query("offset") Integer offset);
 
     @GET(PREFIXO + "/{id_actividade}/")
-    Observable<Actividade> getActividade(@Path("id_actividade") Integer idActividade,
+    Call<Actividade> getActividade(@Path("id_actividade") Integer idActividade,
                                          @Query("modificada") Long modificada);
 
     @GET(PREFIXO + "/{id_actividade}/categorias/")
-    Observable<List<Taxonomia>> getCategoriasActividade(@Path("id_actividade") Integer idActividade);
+    Call<List<Taxonomia>> getCategoriasActividade(@Path("id_actividade") Integer idActividade);
 
     @GET(PREFIXO + "/{id_actividade}/etiquetas/")
-    Observable<List<Taxonomia>> getEtiquetasActividade(@Path("id_actividade") Integer idActividade);
+    Call<List<Taxonomia>> getEtiquetasActividade(@Path("id_actividade") Integer idActividade);
 
     @GET(PREFIXO + "/{id_actividade}/publicacoes/")
-    Observable<List<Publicacao>> getPublicacoesActividade(@Path("id_actividade") Integer idActividade);
+    Call<List<Publicacao>> getPublicacoesActividade(@Path("id_actividade") Integer idActividade);
 
     @GET(PREFIXO + "/{id_actividade}/localizacoes/")
-    Observable<List<Publicacao>> getLocalizacoesActividade(@Path("id_actividade") Integer idActividade);
+    Call<List<Publicacao>> getLocalizacoesActividade(@Path("id_actividade") Integer idActividade);
 }

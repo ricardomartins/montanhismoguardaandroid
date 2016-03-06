@@ -3,31 +3,40 @@ package pt.rikmartins.clubemg.clubemgandroid.base;
 import android.app.Application;
 import android.content.Context;
 
-import pt.rikmartins.clubemg.clubemgandroid.armazenamemto.dagger.ArmazenamentoComponent;
+import javax.inject.Singleton;
+
+import dagger.Component;
 import pt.rikmartins.clubemg.clubemgandroid.armazenamemto.dagger.ArmazenamentoModule;
-import pt.rikmartins.clubemg.clubemgandroid.armazenamemto.dagger.DaggerArmazenamentoComponent;
-import pt.rikmartins.clubemg.clubemgandroid.comunicacoes.dagger.ComunicacoesComponent;
-import pt.rikmartins.clubemg.clubemgandroid.comunicacoes.dagger.DaggerComunicacoesComponent;
+import pt.rikmartins.clubemg.clubemgandroid.comunicacoes.dagger.DaggerSimpleRestComponent;
 import pt.rikmartins.clubemg.clubemgandroid.comunicacoes.dagger.RestApiModule;
+import pt.rikmartins.clubemg.clubemgandroid.comunicacoes.dagger.SimpleRestComponent;
+import pt.rikmartins.clubemg.clubemgandroid.ui.publicacoes.PublicacoesActivity;
 
 public class ClubeMGApplication extends Application {
-    private ArmazenamentoComponent armazenamentoComponent;
-    private ComunicacoesComponent comunicacoesComponent;
+    private ClubeMGComponent clubeMGComponent;
+    private SimpleRestComponent simpleRestComponent;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        armazenamentoComponent = DaggerArmazenamentoComponent.builder()
+        clubeMGComponent = DaggerClubeMGApplication_ClubeMGComponent.builder()
                 .armazenamentoModule(new ArmazenamentoModule(this)).build();
-        comunicacoesComponent = DaggerComunicacoesComponent.builder()
-                .restApiModule(new RestApiModule(false)).build(); // Mudar para true para usar a api na máquina local
+        simpleRestComponent = DaggerSimpleRestComponent.builder()
+                .restApiModule(new RestApiModule(false)).build();
     }
 
-    public static ArmazenamentoComponent getArmazenamentoComponent(Context context) {
-        return ((ClubeMGApplication)context.getApplicationContext()).armazenamentoComponent;
+    public static ClubeMGComponent getClubeMGComponent(Context context) {
+        return ((ClubeMGApplication)context.getApplicationContext()).clubeMGComponent;
     }
 
-    public static ComunicacoesComponent getComunicacoesComponent(Context context) {
-        return ((ClubeMGApplication)context.getApplicationContext()).comunicacoesComponent;
+    public static SimpleRestComponent getSimpleRestComponent(Context context) {
+        return ((ClubeMGApplication)context.getApplicationContext()).simpleRestComponent;
+    }
+
+    @Singleton
+    @Component(modules = {ArmazenamentoModule.class})
+    public interface ClubeMGComponent {
+        void inject(PublicacoesActivity publicacoesActivity);
+        void inject(ClubeMGActivity clubeMGActivity);
     }
 }
