@@ -3,7 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MontanhismoGuarda.iml" filepath="$PROJECT_DIR$/MontanhismoGuarda.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MontanhismoGuarda.iml" filepath="$PROJECT_DIR$/MontanhismoGuarda.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/calendario/calendario.iml" filepath="$PROJECT_DIR$/calendario/calendario.iml" />
       <module fileurl="file://$PROJECT_DIR$/calendario/calendario.iml" filepath="$PROJECT_DIR$/calendario/calendario.iml" />
     </modules>
   </component>
