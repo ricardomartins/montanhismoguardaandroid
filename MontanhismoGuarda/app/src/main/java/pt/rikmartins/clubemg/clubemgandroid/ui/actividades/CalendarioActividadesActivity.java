@@ -1,13 +1,13 @@
 package pt.rikmartins.clubemg.clubemgandroid.ui.actividades;
 
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.widget.RecyclerView;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
 import pt.rikmartins.clubemg.clubemgandroid.R;
 import pt.rikmartins.clubemg.clubemgandroid.base.ClubeMGDrawerActivity;
 import pt.rikmartins.clubemg.clubemgandroid.comunicacoes.clubemg.v1.CategoriasService;
@@ -21,11 +21,8 @@ public class CalendarioActividadesActivity extends ClubeMGDrawerActivity {
     @Inject CategoriasService categoriasService;
     @Inject EtiquetasService etiquetasService;
 
-    @Bind(R.id.main_content)
     CoordinatorLayout mainContent;
-    @Bind(R.id.appbar)
     AppBarLayout appBar;
-    @Bind(R.id.listaPublicacoes)
     RecyclerView recyclerViewPager;
 
     @Override
@@ -33,7 +30,16 @@ public class CalendarioActividadesActivity extends ClubeMGDrawerActivity {
         return R.layout.activity_publicacoes;
     }
 
-//    public void obterNoticias(View view) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        mainContent = (CoordinatorLayout) findViewById(R.id.main_content);
+        appBar = (AppBarLayout) findViewById(R.id.appbar);
+        recyclerViewPager = (RecyclerView) findViewById(R.id.listaPublicacoes);
+    }
+
+    //    public void obterNoticias(View view) {
 //
 //        Observable<Pagina<Publicacao>> observable = apiV1Endpoint.getPublicacoes(null, null, null);
 //

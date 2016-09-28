@@ -17,8 +17,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import pt.rikmartins.clubemg.clubemgandroid.R;
 import pt.rikmartins.clubemg.clubemgandroid.base.ClubeMGApplication;
 import pt.rikmartins.clubemg.clubemgandroid.comunicacoes.clubemg.v1.CategoriasService;
@@ -197,18 +195,18 @@ public class PublicacoesAdapter extends RecyclerView.Adapter<PublicacoesAdapter.
     }
 
     public static class PublicacaoViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.itemPublicacao)
         RelativeLayout itemPublicacao;
-        @Bind(R.id.tituloPublicacao)
         TextView tituloPublicacao;
-        @Bind(R.id.excertoPublicacao)
         TextView excertoPublicacao;
-        @Bind(R.id.imagemPublicacao)
         ImageView imagemPublicacao;
 
         public PublicacaoViewHolder(LayoutInflater inflater, @LayoutRes int resource, ViewGroup parent) {
             super(inflater.inflate(resource, parent, false));
-            ButterKnife.bind(this, itemView);
+
+            itemPublicacao = (RelativeLayout) itemView.findViewById(R.id.itemPublicacao);
+            tituloPublicacao = (TextView) itemView.findViewById(R.id.tituloPublicacao);
+            excertoPublicacao = (TextView) itemView.findViewById(R.id.excertoPublicacao);
+            imagemPublicacao = (ImageView) itemView.findViewById(R.id.imagemPublicacao);
         }
     }
 }

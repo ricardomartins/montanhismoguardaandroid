@@ -5,18 +5,18 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 
-import butterknife.Bind;
 import pt.rikmartins.clubemg.clubemgandroid.R;
 
 public abstract class ClubeMGDrawerActivity extends ClubeMGActivity {
-    @Bind(R.id.layoutPublicacoes)
     protected DrawerLayout drawer;
-    @Bind(R.id.navegacao)
     protected NavigationView navegacao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        drawer = (DrawerLayout) findViewById(R.id.layoutPublicacoes);
+        navegacao = (NavigationView) findViewById(R.id.navegacao);
 
         ActionBar supportActionBar = getSupportActionBar();
         if (supportActionBar != null) {

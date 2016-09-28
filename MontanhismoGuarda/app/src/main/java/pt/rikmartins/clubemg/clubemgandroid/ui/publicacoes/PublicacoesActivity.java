@@ -9,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
 import pt.rikmartins.clubemg.clubemgandroid.R;
 import pt.rikmartins.clubemg.clubemgandroid.base.ClubeMGApplication;
 import pt.rikmartins.clubemg.clubemgandroid.base.ClubeMGDrawerActivity;
@@ -19,16 +18,18 @@ public class PublicacoesActivity extends ClubeMGDrawerActivity {
     @Inject
     SharedPreferences sharedPreferences;
 
-    @Bind(R.id.main_content)
     CoordinatorLayout mainContent;
-    @Bind(R.id.appbar)
     AppBarLayout appBar;
-    @Bind(R.id.listaPublicacoes)
     RecyclerView listaPublicacoes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mainContent = (CoordinatorLayout) findViewById(R.id.main_content);
+        appBar = (AppBarLayout) findViewById(R.id.appbar);
+        listaPublicacoes = (RecyclerView) findViewById(R.id.listaPublicacoes);
+
         ClubeMGApplication.getClubeMGComponent(this).inject(this);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);

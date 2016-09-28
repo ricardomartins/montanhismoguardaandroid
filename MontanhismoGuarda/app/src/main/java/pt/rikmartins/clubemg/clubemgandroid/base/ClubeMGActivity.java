@@ -10,20 +10,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.inject.Singleton;
-
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import dagger.Component;
 import pt.rikmartins.clubemg.clubemgandroid.R;
-import pt.rikmartins.clubemg.clubemgandroid.armazenamemto.dagger.ArmazenamentoModule;
 import pt.rikmartins.clubemg.clubemgandroid.comunicacoes.RXSubscriptionHolder;
-import pt.rikmartins.clubemg.clubemgandroid.comunicacoes.dagger.RestApiModule;
-import pt.rikmartins.clubemg.clubemgandroid.ui.publicacoes.PublicacoesActivity;
 import rx.Subscription;
 
 public abstract class ClubeMGActivity extends AppCompatActivity implements RXSubscriptionHolder {
-    @Bind(R.id.toolbar)
     protected Toolbar toolbar;
 
     private final List<Subscription> subscriptionList = new ArrayList<>();
@@ -32,8 +23,8 @@ public abstract class ClubeMGActivity extends AppCompatActivity implements RXSub
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getContentViewId());
-        ButterKnife.bind(this);
 
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     }
 
